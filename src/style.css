@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Tailwind v4: dark: soll über .dark (class auf <html>) funktionieren */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+    .app-bg {
+        @apply bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50;
+    }
+
+    .surface {
+        @apply bg-white/70 dark:bg-white/5;
+    }
+
+    .border-subtle {
+        @apply border-zinc-200/70 dark:border-white/10;
+    }
+
+    .text-muted {
+        @apply text-zinc-600 dark:text-white/60;
+    }
+
+    .text-subtle {
+        @apply text-zinc-700 dark:text-white/70;
+    }
+
+    .btn-ghost {
+        @apply rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm hover:bg-zinc-50 transition dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10;
+    }
+
+    .tag {
+        @apply rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-xs text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-white/70;
+    }
+
+    .card {
+        @apply rounded-2xl border border-zinc-200/70 bg-white/70 p-6 hover:bg-white/90 transition dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/7;
+    }
+
+    .card-dashed {
+        @apply rounded-2xl border border-dashed border-zinc-300 bg-white/50 p-6 dark:border-white/15 dark:bg-white/3;
+    }
+}
