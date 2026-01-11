@@ -71,14 +71,29 @@ const projects: Project[] = [
     liveUrl: "https://mtf.academy",
     image: "/projects/mtf-academy.png",
   },
+]
+
+type TimelineItem = {
+  title: string
+  description: string
+  period: string
+}
+
+const timeline: TimelineItem[] = [
   {
-    title: "Elektriker One-Pager",
-    subtitle: "Business-Website für Handwerksbetrieb",
-    description:
-      "Konzeption und Umsetzung einer schnellen, mobil-optimierten One-Page Website mit Leistungsübersicht, Galerie und Kontaktmöglichkeit.",
-    stack: ["Vite", "Tailwind CSS", "TypeScript", "Static Hosting"],
-    features: ["Leistungen-Section", "Galerie/Referenzen", "Kontakt-CTA", "Mobile-first Layout"],
-    image: "/projects/elektriker.png",
+    title: "Fachabitur",
+    description: "Informatik, Mathematik und Wirtschaft.",
+    period: "2020 – 2022",
+  },
+  {
+    title: "Studium: Software Engineering",
+    description: "Zwei Jahre Studium mit Fokus auf Programmierung, Softwarearchitektur und Algorithmen.",
+    period: "2022 – 2024",
+  },
+  {
+    title: "Ausbildung: Fachinformatiker für Anwendungsentwicklung",
+    description: "Praxisnahe Ausbildung - Schwerpunkt Webentwicklung mit Low-Code-Technologie.",
+    period: "2024 – 2026",
   },
 ]
 
@@ -88,6 +103,7 @@ const App = () => `
     <main class="mx-auto w-full max-w-6xl px-5 pb-20">
       ${Hero()}
       ${Projects()}
+      ${Timeline()}
       ${Footer()}
     </main>
   </div>
@@ -201,6 +217,42 @@ const Projects = () => `
       ${projects.map(ProjectCard).join("")}
     </div>
   </section>
+`
+
+const Timeline = () => `
+  <section id="timeline" class="mt-20 md:mt-28">
+    <h2 class="text-2xl font-semibold tracking-tight">Werdegang</h2>
+    <p class="mt-2 text-sm text-muted">
+      Kurzüberblick über meinen bisherigen Bildungs- und Ausbildungsweg.
+    </p>
+
+    <div class="relative mt-10">
+      <!-- vertical line -->
+      <div class="absolute left-3 top-0 h-full w-px bg-zinc-200 dark:bg-white/15"></div>
+
+      <div class="space-y-10">
+        ${timeline.map(TimelineItem).join("")}
+      </div>
+    </div>
+  </section>
+`
+
+const TimelineItem = (item: TimelineItem) => `
+  <div class="relative flex gap-6">
+    <!-- dot -->
+    <div class="relative z-10 mt-1 h-6 w-6 rounded-full border border-zinc-300 bg-white
+                dark:border-white/20 dark:bg-zinc-950"></div>
+
+    <div class="card w-full">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h3 class="font-medium">${item.title}</h3>
+        <span class="text-xs text-muted">${item.period}</span>
+      </div>
+      <p class="mt-2 text-sm text-subtle">
+        ${item.description}
+      </p>
+    </div>
+  </div>
 `
 
 const ProjectCard = (p: Project) => `
